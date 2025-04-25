@@ -3,6 +3,7 @@ const {
   calculateSubtraction,
   calculateMultiplication,
   calculateDivision,
+  operate,
 } = require("./script");
 
 describe("calculateAddition", () => {
@@ -98,5 +99,27 @@ describe("calculateDivision", () => {
 
   test("performs division with zero dividend", () => {
     expect(calculateDivision(0, 12)).toBe(0);
+  });
+});
+
+describe("operate", () => {
+  test("performs addition", () => {
+    expect(operate(4, 2, "+")).toBe(6);
+  });
+
+  test("performs subtraction", () => {
+    expect(operate(4, 2, "-")).toBe(2);
+  });
+
+  test("performs addition", () => {
+    expect(operate(4, 2, "*")).toBe(8);
+  });
+
+  test("performs addition", () => {
+    expect(operate(4, 2, "/")).toBe(2);
+  });
+
+  test("handles division by zero", () => {
+    expect(operate(4, 0, "/")).toBe("ERROR");
   });
 });
