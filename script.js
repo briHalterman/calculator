@@ -9,6 +9,7 @@ const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const calculateButton = document.querySelector(".equal-sign");
 const clearButton = document.querySelector(".clear");
+const decimalButton = document.querySelector(".decimal-point");
 
 const updateDisplay = () => {
   const display = document.getElementById("display");
@@ -64,4 +65,14 @@ clearButton.addEventListener("click", () => {
   operator = "";
   displayValue = "";
   updateDisplay();
+});
+
+decimalButton.addEventListener("click", () => {
+  const tokens = displayValue.split(" ");
+  const currentToken = tokens[tokens.length - 1];
+
+  if (!currentToken.includes(".")) {
+    displayValue += ".";
+    updateDisplay();
+  }
 });
