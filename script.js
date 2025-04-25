@@ -4,6 +4,7 @@ let operator = "";
 let displayValue = "";
 
 const digitButtons = document.querySelectorAll(".digit");
+const operatorButtons = document.querySelectorAll(".operator");
 
 const updateDisplay = () => {
   const display = document.getElementById("display");
@@ -18,4 +19,16 @@ const handleDigitClick = (event) => {
 
 digitButtons.forEach((button) => {
   button.addEventListener("click", handleDigitClick);
+});
+
+operatorButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    if (operandA === undefined && displayValue !== "") {
+      operandA = parseFloat(displayValue);
+      operator = event.target.textContent;
+      // console.log(operandA); // for manual testing
+      displayValue = "";
+      updateDisplay();
+    }
+  });
 });
