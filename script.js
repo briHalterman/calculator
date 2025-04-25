@@ -49,7 +49,9 @@ calculateButton.addEventListener("click", () => {
     console.log(operandB); // for manual testing
     const calculation = window.operate(operandA, operandB, operator);
 
-    displayValue = calculation.toString();
+    displayValue = (
+      Math.round(calculation * 10000) / 10000
+    ).toString();
     console.log(displayValue); // for manual testing
     updateDisplay();
 
