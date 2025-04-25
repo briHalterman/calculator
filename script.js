@@ -25,8 +25,9 @@ operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     if (operandA === undefined && displayValue !== "") {
       operandA = parseFloat(displayValue);
-      operator = event.target.textContent;
       // console.log(operandA); // for manual testing
+      operator = event.target.textContent;
+      // console.log(operator); // for manual testing
       displayValue = "";
       updateDisplay();
     }
