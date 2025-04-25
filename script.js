@@ -40,6 +40,17 @@ operatorButtons.forEach((button) => {
 });
 
 calculateButton.addEventListener("click", () => {
+  const tokens = displayValue.split(" ");
+  const currentToken = tokens[tokens.length - 1];
+
+  if (
+    operator === currentToken ||
+    !currentToken ||
+    isNaN(currentToken)
+  ) {
+    return;
+  }
+
   if (
     operandA !== undefined &&
     operator !== "" &&
