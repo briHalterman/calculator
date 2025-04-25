@@ -18,7 +18,13 @@ const updateDisplay = () => {
 
 const handleDigitClick = (event) => {
   const digit = event.target.textContent;
-  displayValue += digit;
+
+  if (operandA === undefined) {
+    displayValue = digit;
+  } else {
+    displayValue += digit;
+  }
+
   updateDisplay();
 };
 
