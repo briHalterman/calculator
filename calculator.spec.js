@@ -4,7 +4,7 @@ const {
   calculateMultiplication,
   calculateDivision,
   operate,
-} = require("./script");
+} = require("./calculator");
 
 describe("calculateAddition", () => {
   test("adds 0 and 0", () => {
