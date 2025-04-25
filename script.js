@@ -8,6 +8,7 @@ let displayValue = "";
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const calculateButton = document.querySelector(".equal-sign");
+const clearButton = document.querySelector(".clear");
 
 const updateDisplay = () => {
   const display = document.getElementById("display");
@@ -55,4 +56,12 @@ calculateButton.addEventListener("click", () => {
     operandB = undefined;
     operator = "";
   }
+});
+
+clearButton.addEventListener("click", () => {
+  operandA = undefined;
+  operandB = undefined;
+  operator = "";
+  displayValue = "";
+  updateDisplay();
 });
