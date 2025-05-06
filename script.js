@@ -1,9 +1,8 @@
-// const operate = window.operate;
-
 let operandA = undefined;
 let operandB = undefined;
 let operator = "";
 let displayValue = "";
+let justCalculated = false;
 
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
@@ -19,8 +18,9 @@ const updateDisplay = () => {
 const handleDigitClick = (event) => {
   const digit = event.target.textContent;
 
-  if (operandA === undefined) {
+  if (justCalculated) {
     displayValue = digit;
+    justCalculated = false;
   } else {
     displayValue += digit;
   }
@@ -36,10 +36,11 @@ operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     if (operandA === undefined && displayValue !== "") {
       operandA = parseFloat(displayValue);
-      console.log(operandA); // for manual testing
+      // console.log(operandA); // for manual testing
       operator = event.target.dataset.operator;
-      console.log(operator); // for manual testing
+      // console.log(operator); // for manual testing
       displayValue += ` ${event.target.textContent} `;
+      justCalculated = false;
       updateDisplay();
     }
   });
@@ -62,19 +63,20 @@ calculateButton.addEventListener("click", () => {
     operator !== "" &&
     displayValue !== ""
   ) {
-    operandB = parseFloat(displayValue.split(" ").pop());
-    console.log(operandB); // for manual testing
+    operandB = parseFloat(currentToken);
+    // console.log(operandB); // for manual testing
     const calculation = window.operate(operandA, operandB, operator);
 
     displayValue = (
       Math.round(calculation * 10000) / 10000
     ).toString();
-    console.log(displayValue); // for manual testing
+    // console.log(displayValue); // for manual testing
     updateDisplay();
 
     operandA = undefined;
     operandB = undefined;
     operator = "";
+    justCalculated = true;
   }
 });
 
@@ -83,6 +85,7 @@ clearButton.addEventListener("click", () => {
   operandB = undefined;
   operator = "";
   displayValue = "";
+  justCalculated = false;
   updateDisplay();
 });
 
